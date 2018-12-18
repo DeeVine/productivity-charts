@@ -1,5 +1,6 @@
 /*
 TODO:
+[ ] add data attributes to input field so that we can reference
 [ ] save state changes to DB
 [ ] on click strike through and move to completed tasks
 [ ] toggle text field edit with 'edit' button
@@ -135,6 +136,13 @@ addButton.addEventListener('click', function (event) {
     document.getElementById('task-input').value = '';
   }
 })
+
+const todoUl = document.querySelector('#todo-container')
+const listItem = todoUl.getElementsByTagName('li');
+const newNums = [];
+for (let i=0; i < listItem.length; i++) {
+    newNums.push( parseInt( listItem[i].innerHTML, 10 ) );
+}
 
 console.log('todoContainer current target', document.querySelector('#todo-container').currentTarget);
 
