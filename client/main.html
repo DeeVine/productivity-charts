@@ -7,13 +7,15 @@
   </head>
   <body>
     <div class='container'>
-      <div id='section-title'>This title should change</div>
+      <div id='section-title'>This title should change to task/goal title you select</div>
+      <div id='percentage-completed' value='some percentage'>100%</div>
       <div class='add-task-section'>
         <h1 class='title'>
           Add Task
         </h1>
         <form id='add-task' onsubmit='return newTask("testing again")'>
           <input id='task-input' placeholder='task' type='text' name= 'task'>
+          <input id='task-percentage' placeholder='task' type='text' name= 'percentage'>
           <input id='add-button' type='submit' value='Add'>
           <button id='make-checked'>Change to checked</button>
         </form>
