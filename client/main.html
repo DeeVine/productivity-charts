@@ -6,32 +6,34 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
   </head>
   <body>
-    <div id='section-title'>This title should change</div>
-    <div>
-      <h1 class='title'>
-        Add Task
-      </h1>
-      <form id='add-task' onsubmit='return newTask("testing again")'>
-        <input id='task-input' placeholder='task' type='text' name= 'task'>
-        <input id='add-button' type='submit' value='Add'>
-        <button id='make-checked'>Change to checked</button>
-      </form>
-    </div>
-    <div>
-      <h1 class='title'>
-        Todo List
-      </h1>
-      <ul id='todo-container'>
-        <li id'test-item'>tasks append to here</li>
-      </ul>
-    </div>
-    <div>
-      <h1 class='title'>
-        Completed Tasks
-      </h1>
-      <ul id='completed-container'>
-        <li>completed tasks go here</li>
-      </ul>
+    <div class='container'>
+      <div id='section-title'>This title should change</div>
+      <div class='add-task-section'>
+        <h1 class='title'>
+          Add Task
+        </h1>
+        <form id='add-task' onsubmit='return newTask("testing again")'>
+          <input id='task-input' placeholder='task' type='text' name= 'task'>
+          <input id='add-button' type='submit' value='Add'>
+          <button id='make-checked'>Change to checked</button>
+        </form>
+      </div>
+      <div class='todo-section'>
+        <h1 class='title'>
+          Todo List
+        </h1>
+        <ul id='todo-container'>
+          <li id'test-item'>tasks append to here</li>
+        </ul>
+      </div>
+      <div class='completed-tasks-section'>
+        <h1 class='title'>
+          Completed Tasks
+        </h1>
+        <ul id='completed-container'>
+          <li>completed tasks go here</li>
+        </ul>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="javascript/script.js"></script>

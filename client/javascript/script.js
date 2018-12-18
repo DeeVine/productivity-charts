@@ -1,11 +1,33 @@
 /*
 TODO:
+[ ] save state changes to DB
 [ ] on click strike through and move to completed tasks
 [ ] toggle text field edit with 'edit' button
 [ ] maintain appended order when moving between 'Completed Tasks' and 'Todo List'
 */
 
-document.querySelector('#section-title').innerHTML = 'testing the function';
+const myObj = {
+  'note1': {
+    'content': 'this is note1 content',
+    'percentage': .25
+  },
+  'note2': {
+    'content': 'this is note2 content',
+    'percentage': .25
+  },
+  'note3': {
+    'content': 'this is note1 content',
+    'percentage': .50
+  },
+}
+
+console.log('myObj values', myObj);
+
+for (x in myObj) {
+  console.log('x value', myObj[x]);
+}
+
+// document.querySelector('#section-title').innerHTML = 'testing the function';
 
 localStorage.setItem('isChecked', true);
 
@@ -21,16 +43,20 @@ makeChecked.addEventListener('click', function(event) {
   })
 })
 
+//we pass in JSON object that contains task data
 const generateTaskElement = (task) => {
   const newLi = document.createElement('li');
   const newInput = document.createElement('input');
-  newInput.value = task;
+  newInput.value = task.content;
+  const percentage = document.createElement('input');
+  percentage.value = task.percentage;
   const checkBox = document.createElement('input');
   checkBox.type = 'checkbox';
   checkBox.className = 'checked';
   const taskElement = {
     'newLi': newLi,
     'newInput': newInput,
+    'percentage': percentage,
     'checkBox': checkBox
   }
   return taskElement;
@@ -38,6 +64,7 @@ const generateTaskElement = (task) => {
 
 const addNewTask = (task) => {
   taskElement = generateTaskElement(task);
+  //function for eventListener that moves task to completed
   const moveToCompleted = (event) => {
     event.preventDefault();
     const taskParentNode = event.currentTarget.parentNode;
@@ -59,11 +86,23 @@ const addNewTask = (task) => {
     moveToCompleted(event);
   });
 
+  //append elements to node to create new task element
   taskElement.newLi.appendChild(taskElement.newInput);
+  taskElement.newLi.appendChild(taskElement.percentage);
   taskElement.newLi.appendChild(taskElement.checkBox);
   const todoContainer = document.getElementById('todo-container');
   todoContainer.appendChild(taskElement.newLi);
 }
+
+//generate tasks in list from a JSON object
+const populateTasks = (existingTasks) => {
+  for (x in existingTasks) {
+    console.log('x value in populateTasks', existingTasks[x]);
+    addNewTask(existingTasks[x]);
+  }
+}
+
+populateTasks(myObj);
 
 const addButton = document.getElementById('add-button');
 
@@ -78,5 +117,3 @@ addButton.addEventListener('click', function (event) {
     document.getElementById('task-input').value = '';
   }
 })
-
-// addNewTask('testing this out');
